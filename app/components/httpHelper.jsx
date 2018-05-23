@@ -1,7 +1,6 @@
-export default function get (url,callback) {
+export default function httpRequest (option,callback) {
     const {net} = require('electron');
-
-    const request = net.request(url);
+    const request = net.request(option);
     request.on('response', (response) => {
         let body = '';
         response.on('data', (chunk) => {
