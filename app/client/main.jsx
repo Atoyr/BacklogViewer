@@ -8,5 +8,5 @@ bt.addEventListener('click',function(){
 });
 
 electron.ipcRenderer.on('async-get-myself-reply', function(event, arg) {
-    ReactDOM.render(`<div>${arg}</div>`, document.getElementById("app"))
+    ReactDOM.render(<div>{arg}</div>, document.getElementById("app"))
 });

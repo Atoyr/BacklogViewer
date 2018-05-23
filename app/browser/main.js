@@ -67,5 +67,4 @@ ipcMain.on('async-get-myself',function(event,arg){
   //     });
   // });
   // request.end();
-
 });
