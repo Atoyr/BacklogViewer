@@ -1,11 +1,10 @@
-import * as React from 'react'
-var createReactClass = require('create-react-class');
+import React, {Component} from 'react'
 
-class Moc extends React.Component{
-  getInitialState() {
-    return {
-      count: 0
-    };
+class Moc extends Component{
+  constructor(){
+    super();
+    this.state = {count :0};
+    this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
     this.setState({count: this.state.count + 1});
@@ -14,7 +13,7 @@ class Moc extends React.Component{
     return (
         <div>
             <div>count:{this.state.count}</div>
-            <button onClick={this.onClick}>click!</button>
+            <button onClick={this.handleClick}>click!</button>
         </div>
     );
   }
