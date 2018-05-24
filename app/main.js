@@ -2,8 +2,8 @@ const path = require('path');
 const {app, BrowserWindow} = require('electron');
 const debug = /--debug/.test(process.argv[2]);
 import {ipcMain} from "electron";
-import * as backlogApi from '../components/backlogApi.jsx';
-import httpHelper from '../components/httpHelper.jsx';
+import * as backlogApi from './containers/backlogApi.jsx';
+import httpHelper from './containers/httpHelper.jsx';
 import * as storage from 'electron-json-storage';
 
 var mainWindow = null;
@@ -19,18 +19,18 @@ function initialize () {
       title: app.getName()
     }
 
-    設定読み込み
+    //設定読み込み
     storage.get('config', function (error, data) {
       if (error) throw error;
       if (Object.keys(data).length === 0) {
         apiKey = 'hoge';
       } else {
-        apiKey = data.apiKey;
+        // apiKey = data.apiKey;
       }
     });
 
     mainWindow = new BrowserWindow(windowOptions)
-    mainWindow.loadURL(path.join('file://', __dirname, '../client/index.html'))
+    mainWindow.loadURL(path.join('file://', __dirname, './index.html'))
 
     // Launch fullscreen with DevTools open, usage: npm run debug
     if (debug) {
