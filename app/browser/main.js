@@ -1,9 +1,14 @@
 const path = require('path');
 const {app, BrowserWindow} = require('electron');
 const debug = /--debug/.test(process.argv[2]);
+import {ipcMain} from "electron";
+import * as backlogApi from '../components/backlogApi.jsx';
+import httpHelper from '../components/httpHelper.jsx';
+import * as storage from 'electron-json-storage';
 
 var mainWindow = null;
-
+var user = '';
+var apiKey = '';
 
 function initialize () {
   function createWindow () {
@@ -13,6 +18,16 @@ function initialize () {
       height: 840,
       title: app.getName()
     }
+
+    設定読み込み
+    storage.get('config', function (error, data) {
+      if (error) throw error;
+      if (Object.keys(data).length === 0) {
+        apiKey = 'hoge';
+      } else {
+        apiKey = data.apiKey;
+      }
+    });
 
     mainWindow = new BrowserWindow(windowOptions)
     mainWindow.loadURL(path.join('file://', __dirname, '../client/index.html'))
@@ -31,7 +46,7 @@ function initialize () {
     createWindow();
   });
   app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
+    if (process.platform !== 'darwin') {  
       app.quit()
     }
   });
@@ -40,7 +55,38 @@ function initialize () {
       createWindow()
     }
   });
+  app.on('before-quit', () => {
+    // 設定書き込み      
+    var json = {
+      user: 'hoge'
+    };
+    storage.set('config', json, function (error) {
+        if (error) throw error;
+    });
+  })
 }
 
 // Handle Squirrel on Windows startup events
 initialize()
+
+ipcMain.on('async-get-myself',function(event,arg){
+  httpHelper('http://google.com',(status,header,body) => {  event.sender.send('async-get-myself-reply',body);})
+  // let apiKey = arg.apiKey;
+  // let spaceKey = arg.spaceKey;
+  // backlog.getMyself(spaceKey,apiKey,(body) => {
+  //   event.sender.send('async-get-myself-reply',body);
+  // });
+
+  // const {net} = require('electron');
+  // const request = net.request('http://google.com');
+  // request.on('response', (response) => {
+  //     let body = '';
+  //     response.on('data', (chunk) => {
+  //         body += chunk;
+  //     });
+  //     response.on('end', () => {
+  //         event.sender.send('async-get-myself-reply',body);
+  //     });
+  // });
+  // request.end();
+});
