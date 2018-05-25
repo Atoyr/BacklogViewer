@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as electron from 'electron'
-import Header from'../components/Header.jsx';
+import App from'../components/App.jsx';
 
 ReactDOM.render(<div><button id='bt'>GET IT</button></div>, document.getElementById("app"))
 const bt = document.getElementById('bt');
@@ -14,6 +14,6 @@ electron.ipcRenderer.on('async-get-myself-reply', function(event, arg) {
 });
 
 ReactDOM.render(
-    <Header />,
+    <App />,
     document.getElementById("app")
   );
