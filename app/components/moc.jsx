@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {Button} from 'react-bootstrap';
 
 var style = {
   container: {
@@ -21,6 +22,8 @@ class Moc extends Component{
         <div>
             <div>count:{this.state.count}</div>
             <button style={style.container} onClick={this.handleClick}>click!</button>
+            <br />
+            <Button onClick={this.handleClick}> bootstrap Click!</Button>
         </div>
     );
   }
