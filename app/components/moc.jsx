@@ -1,4 +1,12 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {Button} from 'react-bootstrap';
+
+var style = {
+  container: {
+    backgroundColor: "#ddd",
+    width: 120
+  }
+}
 
 class Moc extends Component{
   constructor(){
@@ -13,7 +21,9 @@ class Moc extends Component{
     return (
         <div>
             <div>count:{this.state.count}</div>
-            <button onClick={this.handleClick}>click!</button>
+            <button style={style.container} onClick={this.handleClick}>click!</button>
+            <br />
+            <Button onClick={this.handleClick}> bootstrap Click!</Button>
         </div>
     );
   }
