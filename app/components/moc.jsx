@@ -1,5 +1,12 @@
 import React, {Component} from 'react'
 
+var style = {
+  container: {
+    backgroundColor: "#ddd",
+    width: 120
+  }
+}
+
 class Moc extends Component{
   constructor(){
     super();
@@ -13,7 +20,7 @@ class Moc extends Component{
     return (
         <div>
             <div>count:{this.state.count}</div>
-            <button onClick={this.handleClick}>click!</button>
+            <button style={style.container} onClick={this.handleClick}>click!</button>
         </div>
     );
   }
