@@ -19,15 +19,22 @@ function initialize () {
       title: app.getName()
     }
 
-    //設定読み込み
-    storage.get('config', function (error, data) {
-      if (error) throw error;
-      if (Object.keys(data).length === 0) {
-        apiKey = 'hoge';
-      } else {
-        // apiKey = data.apiKey;
-      }
-    });
+    //   // 設定書き込み      
+    //   var json = {
+    //     apiKey: 'hogehoge'
+    //   };
+    //   storage.set('config', json, function (error) {
+    //       if (error) throw error;
+    //   });
+    // //設定読み込み
+    // storage.get('config', function (error, data) {
+    //   if (error) throw error;
+    //   if (Object.keys(data).length === 0) {
+    //     apiKey = 'hoge';
+    //   } else {
+    //     // apiKey = data.apiKey;
+    //   }
+    // });
 
     mainWindow = new BrowserWindow(windowOptions)
     mainWindow.loadURL(path.join('file://', __dirname, './index.html'))
@@ -55,15 +62,6 @@ function initialize () {
       createWindow()
     }
   });
-  app.on('before-quit', () => {
-    // 設定書き込み      
-    var json = {
-      user: 'hoge'
-    };
-    storage.set('config', json, function (error) {
-        if (error) throw error;
-    });
-  })
 }
 
 // Handle Squirrel on Windows startup events
