@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 import settings from './settings';
 
-const settingApp = combineReducers({
+const rootReducer = combineReducers({
     settings
 });
 
-export default settingApp;
+export default rootReducer;

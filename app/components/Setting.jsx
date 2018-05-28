@@ -30,6 +30,7 @@ var Setting = CreateReact({
                               <FormGroup controlId='formControlsText'>
                                   <ControlLabel>Backlog URL</ControlLabel>
                                   <FormControl 
+                                  value={this.props.Setting}
                                   placeholder="Enter Backlog URL"
                                   />
                               </FormGroup>
