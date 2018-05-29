@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import CreateReact from 'create-react-class'
 import { connect } from 'react-redux'
-import { saveSetting } from '../actions'
+import { saveSetting, saveSettingAsync } from '../actions'
 import App from '../components/App'
 
 function mapStateToProps(state){
