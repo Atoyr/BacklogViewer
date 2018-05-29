@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import CreateReact from 'create-react-class'
 import { createStore } from 'redux';
 import { connect } from 'react-redux'
@@ -18,8 +19,8 @@ var App = CreateReact({
     )}
 });
 App.propTypes= {
-    setting: React.propTypes.string,
-    onSaveButtonClick :  React.PropTypes.func
+    setting: PropTypes.any,
+    onSaveButtonClick :  PropTypes.func,
 };
 
 
