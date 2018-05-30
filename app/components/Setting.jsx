@@ -17,10 +17,12 @@ const mapDispatchToProps = (dispatch) => {
 var Setting = CreateReact({
   load: function(e) {
     e.preventDefault();
-    loadSetting();
+    this.props.loadSetting({url: 'vvv',apiKey:'kkk'});
     this.url.value = this.props.setting.url;
     return;
   },
+  url:{},
+  apiKey:{},
   render: function() {
     return (
           <Tab.Container id="left-tabs-example" defaultActiveKey="global-setting"
@@ -39,7 +41,8 @@ var Setting = CreateReact({
                           <FormGroup controlId='formControlsText'>
                               <ControlLabel>Backlog URL</ControlLabel>
                               <FormControl 
-                              ref={(ref) => (this.url = ref )}
+                              value={this.props.setting.url}
+                              inputRef={node => this.url = node}
                               placeholder="Enter Backlog URL"
                               />
                           </FormGroup>
@@ -47,6 +50,7 @@ var Setting = CreateReact({
                               <ControlLabel>API Key</ControlLabel>
                               <FormControl 
                               placeholder="Enter API Key"
+                              inputRef={node => this.apiKey = node}
                               value={this.props.setting.apiKey}
                               />
                           </FormGroup>
@@ -63,7 +67,10 @@ var Setting = CreateReact({
     );
   },
   propTypes : {
-    setting: PropTypes.any,
+    setting: PropTypes.shape({
+      url: PropTypes.string,
+      apiKey: PropTypes.string,      
+    }),
     loadSetting: PropTypes.func
   }  
 })

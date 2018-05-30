@@ -13,14 +13,14 @@ var App = CreateReact({
             <Header />
             <Setting 
                 setting={this.props.setting}
-                onSaveButtonClick={this.props.onSaveButtonClick}
+                loadSetting={this.props.loadSetting}
                 />
         </div>
     )}
 });
 App.propTypes= {
     setting: PropTypes.any,
-    onSaveButtonClick :  PropTypes.func,
+    loadSetting: PropTypes.func
 };
 
 
