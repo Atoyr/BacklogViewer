@@ -1,7 +1,5 @@
 import {createAction} from 'redux-actions'
 
-const setting = {apiKey:'s',url:'u'}
-
 // 設定読み込みAction、ActionCreator
 export const SAVE_SETTING = 'SAVE_SETTING';
 export const SAVE_SETTING_ASYNC = 'SAVE_SETTING_ASYNC';

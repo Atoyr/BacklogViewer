@@ -14,13 +14,15 @@ var App = CreateReact({
             <Setting 
                 setting={this.props.setting}
                 loadSetting={this.props.loadSetting}
+                saveSetting={this.props.saveSetting}
                 />
         </div>
     )}
 });
 App.propTypes= {
     setting: PropTypes.any,
-    loadSetting: PropTypes.func
+    loadSetting: PropTypes.func,
+    saveSetting: PropTypes.func
 };
 
 

@@ -7,11 +7,6 @@ import Setting from '../components/Setting'
 const mapStateToProps = (state) =>({
     setting: state.setting
 })
-const mapDispatchToProps = (dispatch) =>({
-    loadSetting: setting => dispatch( loadSetting(setting))
-})
-
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(Setting)

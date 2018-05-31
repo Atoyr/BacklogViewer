@@ -13,7 +13,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch) {
     return {
         loadSetting: (value) => {dispatch(loadSetting(value))},
-        onSaveButtonClick: (value) => { dispatch(saveSetting(value)) }
+        saveSetting: (value) => {dispatch(saveSetting(value))},
     }
 }
 

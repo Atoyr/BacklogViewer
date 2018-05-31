@@ -7,7 +7,7 @@ import {Button,ButtonGroup,} from 'react-bootstrap';
 import {ListGroup, ListGroupItem} from 'react-bootstrap';
 import {Form, FormGroup, FormControl, ControlLabel, HelpBlock, HelpBlockProps} from 'react-bootstrap';
 import {Tab,NavItem,Nav} from 'react-bootstrap'
-import {loadSetting} from '../actions'
+import {loadSetting, saveSetting} from '../actions'
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -17,12 +17,14 @@ const mapDispatchToProps = (dispatch) => {
 var Setting = CreateReact({
   load: function(e) {
     e.preventDefault();
-    this.props.loadSetting({url: 'vvv',apiKey:'kkk'});
-    this.url.value = this.props.setting.url;
+    this.props.loadSetting();
     return;
   },
-  url:{},
-  apiKey:{},
+  save: function(e) {
+    e.preventDefault();
+    this.props.saveSetting({url: 'vvv',apiKey:'kkk'});
+    return;
+  },
   render: function() {
     return (
           <Tab.Container id="left-tabs-example" defaultActiveKey="global-setting"
@@ -42,7 +44,6 @@ var Setting = CreateReact({
                               <ControlLabel>Backlog URL</ControlLabel>
                               <FormControl 
                               value={this.props.setting.url}
-                              inputRef={node => this.url = node}
                               placeholder="Enter Backlog URL"
                               />
                           </FormGroup>
@@ -50,10 +51,10 @@ var Setting = CreateReact({
                               <ControlLabel>API Key</ControlLabel>
                               <FormControl 
                               placeholder="Enter API Key"
-                              inputRef={node => this.apiKey = node}
                               value={this.props.setting.apiKey}
                               />
                           </FormGroup>
+                          <Button onClick={(event) => this.save(event)}>Save</Button>
                           <Button onClick={(event) => this.load(event)}>Save</Button>
                       </Form>
                     </Tab.Pane>
@@ -71,7 +72,8 @@ var Setting = CreateReact({
       url: PropTypes.string,
       apiKey: PropTypes.string,      
     }),
-    loadSetting: PropTypes.func
+    saveSetting: PropTypes.func,
+    loadSetting: PropTypes.func,
   }  
 })
 
