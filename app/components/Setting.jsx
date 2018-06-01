@@ -15,20 +15,20 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 var Setting = CreateReact({
-  load: function(e) {
-    e.preventDefault();
+  componentDidMount : function() {
     this.props.loadSetting();
+    this.url.value = this.props.setting.url;
+    this.apiKey.value = this.props.setting.apiKey;
     return;
   },
   save: function(e) {
     e.preventDefault();
-    this.props.saveSetting({url: 'vvv',apiKey:'kkk'});
+    this.props.saveSetting({url: this.url.value,apiKey: this.apiKey.value});
     return;
   },
   render: function() {
     return (
-          <Tab.Container id="left-tabs-example" defaultActiveKey="global-setting"
-          onLoad={(event) => this.load(event)}>
+          <Tab.Container id="left-tabs-example" defaultActiveKey="global-setting">
             <Row>
                 <Col md={3} xs={3}>
                   <Nav bsStyle="pills" stacked>
@@ -43,7 +43,7 @@ var Setting = CreateReact({
                           <FormGroup controlId='formControlsText'>
                               <ControlLabel>Backlog URL</ControlLabel>
                               <FormControl 
-                              value={this.props.setting.url}
+                              inputRef={(ref) => {this.url = ref}}
                               placeholder="Enter Backlog URL"
                               />
                           </FormGroup>
@@ -51,11 +51,10 @@ var Setting = CreateReact({
                               <ControlLabel>API Key</ControlLabel>
                               <FormControl 
                               placeholder="Enter API Key"
-                              value={this.props.setting.apiKey}
+                              inputRef={(ref) => {this.apiKey = ref}}
                               />
                           </FormGroup>
                           <Button onClick={(event) => this.save(event)}>Save</Button>
-                          <Button onClick={(event) => this.load(event)}>Save</Button>
                       </Form>
                     </Tab.Pane>
                     <Tab.Pane eventKey="user-information">
@@ -76,6 +75,5 @@ var Setting = CreateReact({
     loadSetting: PropTypes.func,
   }  
 })
-
 
 export default Setting;

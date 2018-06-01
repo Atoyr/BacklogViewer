@@ -1,9 +1,10 @@
 import { handleActions } from 'redux-actions'
 import * as storage from 'electron-json-storage';
+import * as storageSync from 'electron-json-storage-sync';
 
-const initialState = {
-    url: 'boo',
-    apiKey: 'foo'
+var initialState = {
+    url: '',
+    apiKey: ''
 }
 
 export default handleActions({
@@ -24,12 +25,12 @@ export default handleActions({
     LOAD_SETTING:(state,action) => {
         //設定読み込み
         var json = initialState;
-        yield storage.get('config', function (error, data) {
-        if (error) throw error;
-        if (Object.keys(data).length === 0) {
-        }else{
-            json.url = data.url
-            json.apiKey = data.apiKey
-        }});
+        const result = storageSync.get('config');
+
+        if (result.error) throw result.error;
+        if (result.status) {
+            json.url = result.data.url
+            json.apiKey = result.data.apiKey
+        };
         return Object.assign({}, state, json)},
 },initialState);
