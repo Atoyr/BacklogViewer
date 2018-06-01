@@ -2,8 +2,8 @@ const path = require('path');
 const {app, BrowserWindow} = require('electron');
 const debug = /--debug/.test(process.argv[2]);
 import {ipcMain} from "electron";
-import * as backlogApi from './containers/backlogApi.jsx';
-import httpHelper from './containers/httpHelper.jsx';
+// import * as backlogApi from './containers/backlogApi.jsx';
+// import httpHelper from './containers/httpHelper.jsx';
 import * as storage from 'electron-json-storage';
 
 var mainWindow = null;
@@ -67,24 +67,24 @@ function initialize () {
 // Handle Squirrel on Windows startup events
 initialize()
 
-ipcMain.on('async-get-myself',function(event,arg){
-  httpHelper('http://google.com',(status,header,body) => {  event.sender.send('async-get-myself-reply',body);})
-  // let apiKey = arg.apiKey;
-  // let spaceKey = arg.spaceKey;
-  // backlog.getMyself(spaceKey,apiKey,(body) => {
-  //   event.sender.send('async-get-myself-reply',body);
-  // });
+// ipcMain.on('async-get-myself',function(event,arg){
+//   httpHelper('http://google.com',(status,header,body) => {  event.sender.send('async-get-myself-reply',body);})
+//   // let apiKey = arg.apiKey;
+//   // let spaceKey = arg.spaceKey;
+//   // backlog.getMyself(spaceKey,apiKey,(body) => {
+//   //   event.sender.send('async-get-myself-reply',body);
+//   // });
 
-  // const {net} = require('electron');
-  // const request = net.request('http://google.com');
-  // request.on('response', (response) => {
-  //     let body = '';
-  //     response.on('data', (chunk) => {
-  //         body += chunk;
-  //     });
-  //     response.on('end', () => {
-  //         event.sender.send('async-get-myself-reply',body);
-  //     });
-  // });
-  // request.end();
-});
+//   // const {net} = require('electron');
+//   // const request = net.request('http://google.com');
+//   // request.on('response', (response) => {
+//   //     let body = '';
+//   //     response.on('data', (chunk) => {
+//   //         body += chunk;
+//   //     });
+//   //     response.on('end', () => {
+//   //         event.sender.send('async-get-myself-reply',body);
+//   //     });
+//   // });
+//   // request.end();
+// });
