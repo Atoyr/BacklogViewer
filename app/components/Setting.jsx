@@ -43,14 +43,16 @@ var Setting = CreateReact({
                           <FormGroup controlId='formControlsText'>
                               <ControlLabel>Backlog URL</ControlLabel>
                               <FormControl 
-                              inputRef={(ref) => {this.url = ref}}
                               placeholder="Enter Backlog URL"
+                              defaultValue=""
+                              inputRef={(ref) => {this.url = ref}}
                               />
                           </FormGroup>
                           <FormGroup controlId='formControlsText'>
                               <ControlLabel>API Key</ControlLabel>
                               <FormControl 
                               placeholder="Enter API Key"
+                              defaultValue=""
                               inputRef={(ref) => {this.apiKey = ref}}
                               />
                           </FormGroup>
