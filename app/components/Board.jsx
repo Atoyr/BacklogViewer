@@ -16,14 +16,6 @@ const mapDispatchToProps = (dispatch) => {
 
 var Setting = CreateReact({
   componentDidMount : function() {
-    this.props.loadSetting();
-    this.url.value = this.props.setting.url;
-    this.apiKey.value = this.props.setting.apiKey;
-    return;
-  },
-  save: function(e) {
-    e.preventDefault();
-    this.props.saveSetting({url: this.url.value,apiKey: this.apiKey.value});
     return;
   },
   render: function() {
