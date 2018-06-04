@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import { connect } from 'react-redux'
 import Header from './Header'
 import Setting from './Setting'
+import Board from './Board'
 import { BrowserRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 const Wrapper = ({ children }) => (
@@ -23,6 +24,9 @@ var App = CreateReact({
             <Wrapper>
                 <Switch>
                     <Route exact path="/"
+                     render={props => 
+                        <Board />}/>
+                    <Route exact path="/setting"
                      render={props => 
                         <Setting 
                             setting={this.props.setting}
