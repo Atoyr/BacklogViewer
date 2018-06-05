@@ -9,6 +9,6 @@ export function getMyself(spaceUrl,apiKey) {
         .catch(error => { error });
 }
 
-function getRestBaseUrl(spaceKey){
+function getRestBaseUrl(spaceUrl){
     return path.join(spaceUrl , '/api/v2/');
 }

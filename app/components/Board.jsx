@@ -21,10 +21,13 @@ var Setting = CreateReact({
   render: function() {
     return (
         <div>
-            <p>board moc</p>
-        </div>    );
+            <div>{this.props.payload}</div>
+            <button onClick={(event) => this.props.getMyselfAsync(event)}> get myself </button>
+        </div>);
   },
   propTypes : {
+    payload: PropTypes.any,
+    getMyselfAsync: PropTypes.func,
   }  
 })
 
