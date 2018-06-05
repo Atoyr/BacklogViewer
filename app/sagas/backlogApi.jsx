@@ -1,21 +1,14 @@
-import * as httpHelper from './httpHelper.jsx';
+import path from 'path'
 
-let domain = 'backlog.jp';
-
-export function getMyself(spaceKey,apiKey,callback) {
-    let hoge = getRestBaseUrl(spaceKey);
-    let url = `${hoge}users/myself`;
+export function getMyself(spaceUrl,apiKey) {
+    let url = `${getRestBaseUrl(spaceUrl)}users/myself`;
     url += `?apiKey=${apiKey}`;
-    let option = {
-        method : 'GET',
-        url : url
-    };
-    httpHelper.httpRequest(option,(status,header,body) => {
-        if(status != '200') throw status;
-        callback(body);
-    });
+    return fetch(url)
+        .then(res => res.json())
+        .then(payload => { payload })
+        .catch(error => { error });
 }
 
 function getRestBaseUrl(spaceKey){
-    return `https://${spaceKey}.${domain}/api/v2/`;
+    return path.join(spaceUrl , '/api/v2/');
 }
