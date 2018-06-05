@@ -5,7 +5,7 @@ export function getMyself(spaceUrl,apiKey) {
     url += `?apiKey=${apiKey}`;
     return fetch(url)
         .then(res => res.json())
-        .then(payload => { payload })
+        // .then(payload => { payload })
         .catch(error => { error });
 }
 
