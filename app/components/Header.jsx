@@ -10,7 +10,7 @@ var Header = CreateReact({
           <Navbar collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
-                <Link to="/">React-Bootstrap</Link>
+                <Link to="/">Backlog Viewer</Link>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
