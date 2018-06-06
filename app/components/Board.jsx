@@ -24,19 +24,26 @@ var board = CreateReact({
 
     return;
   },
+  click2: function(event) {
+    this.props.getIssuesAsync();
+    // const hoge = this.props.board;
+
+    return;
+  },
   render: function() {
     return (
         <div>
             <div>
-             <p>{this.props.board.id}</p>
-             <p>{this.props.board.mailAddress}</p>
-             <p>{this.props.board.name}</p>
+             <p>{this.props.myself.id}</p>
+             <p>{this.props.myself.mailAddress}</p>
+             <p>{this.props.myself.name}</p>
             </div>
             <button onClick={(event) => this.click(event)}> get myself </button>
+            <button onClick={(event) => this.click2(event)}> get Issues </button>
         </div>);
   },
   propTypes : {
-    board: PropTypes.shape
+    myself: PropTypes.shape
     ({
         id: PropTypes.any,
         lang: PropTypes.any,
@@ -47,6 +54,7 @@ var board = CreateReact({
         userId: PropTypes.any,
     }),
     getMyselfAsync: PropTypes.func,
+    getIssuesAsync: PropTypes.func,
   }  
 })
 

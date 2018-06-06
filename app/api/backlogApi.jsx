@@ -12,6 +12,16 @@ export function getMyself(spaceUrl,apiKey) {
         .catch(error => { error });
 }
 
+export function  getIssues(spaceUrl,apiKey) {
+    let url = path.join(getRestBaseUrl(spaceUrl),'issues ');
+    url += `?apiKey=${apiKey}`;
+    console.log(url)
+    return fetch(url)
+        .then(res => res.json())
+        .catch(error => { error });
+}
+
+
 // export function getIcon(spaceUrl,apiKey,userId) {
 //     let url = path.join(getRestBaseUrl(spaceUrl),`users/${userId}/icon`);
 //     url += `?apiKey=${apiKey}`;

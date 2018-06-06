@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
 import setting from './settings';
-import board from './board';
+import myself from './requestMyself';
+import issues from './requestIssues';
 
 export default combineReducers({
-    setting
-    ,board
+    setting,
+    myself,
+    issues,
 });
