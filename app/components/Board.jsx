@@ -14,21 +14,27 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({},dispatch);
 };
 
-var Setting = CreateReact({
+var board = CreateReact({
   componentDidMount : function() {
+    return;
+  },
+  click: function(event) {
+    this.props.getMyselfAsync();
+    const hoge = this.props.myself;
+
     return;
   },
   render: function() {
     return (
         <div>
-            <div>{this.props.payload}</div>
-            <button onClick={(event) => this.props.getMyselfAsync(event)}> get myself </button>
+            <div>{this.props.myself}</div>
+            <button onClick={(event) => this.click(event)}> get myself </button>
         </div>);
   },
   propTypes : {
-    payload: PropTypes.any,
+    myself: PropTypes.any,
     getMyselfAsync: PropTypes.func,
   }  
 })
 
-export default Setting;
+export default board;

@@ -8,6 +8,7 @@ import App from '../components/App'
 function mapStateToProps(state){
     return {
         setting: state.setting,
+        myself: state.myself,
     }
 }
 

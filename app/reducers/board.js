@@ -4,16 +4,28 @@ import * as storageSync from 'electron-json-storage-sync';
 import {getMyself} from '../api/backlogApi'
 
 var initialState = {
+    myself:{
+    id:'',
+    lang:'',
+    mailAddress:'',
+    name:'',
+    nulabAccount:'',
+    roleType:'',
+    userId:'',
+    }
 }
 
 export default handleActions({
     REQUEST_MYSELF:(state,action) => {
-        const result = storageSync.get('config');
-
-        if (result.error) throw result.error;
-        if (result.status) {
-            const hoge = getMyself(result.data.url,result.data.apiKey)
-        };
-        return state;
-        },
+        return Object.assign({}, state, {
+            myself:{
+            id:action.payload.id,
+            lang:action.payload.lang,
+            mailAddress:action.payload.mailAddress,
+            name:action.payload.name,
+            nulabAccount:action.payload.nulabAccount,
+            roleType:action.payload.roleType,
+            userId:action.payload.userId,
+            }
+        })},
 },initialState);

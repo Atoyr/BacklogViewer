@@ -8,10 +8,10 @@ export function* handleRequestMyselfAsync() {
     const result = storageSync.get('config');
     if (result.error) throw result.error;
     if (result.status) {
-        const hoge = yield call(getMyself,result.data.url,result.data.apiKey)
-        console.log(hoge);
-        if(hoge){
-            yield put(requestMyself(hoge));
+        const payload = yield call(getMyself,result.data.url,result.data.apiKey)
+        console.log(payload);
+        if(payload){
+            yield put(requestMyself(payload));
         };
     };
 }

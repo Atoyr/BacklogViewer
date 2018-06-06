@@ -26,8 +26,9 @@ var App = CreateReact({
                     <Route exact path="/"
                      render={props => 
                         <Board 
+                        myself={this.props.myself}
                         getMyselfAsync={this.props.getMyselfAsync}/>}
-                        payload={this.props.payload} />
+                         />
                     <Route exact path="/setting"
                      render={props => 
                         <Setting 
@@ -41,7 +42,7 @@ var App = CreateReact({
 });
 App.propTypes= {
     setting: PropTypes.any,
-    payload: PropTypes.any,
+    myself: PropTypes.any,
     loadSetting: PropTypes.func,
     saveSetting: PropTypes.func,
     getMyselfAsync: PropTypes.func
