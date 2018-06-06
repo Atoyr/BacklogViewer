@@ -4,8 +4,8 @@ import CreateReact from 'create-react-class'
 import { createStore } from 'redux';
 import { connect } from 'react-redux'
 import Header from './Header'
-import Setting from './Setting'
-import Board from './Board'
+import Setting from '../containers/Setting'
+import Board from '../containers/Board'
 import { BrowserRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 const Wrapper = ({ children }) => (
@@ -25,23 +25,32 @@ var App = CreateReact({
                 <Switch>
                     <Route exact path="/"
                      render={props => 
-                        <Board />}/>
+                        <Board />
+                        // <Board 
+                        // myself={this.props.myself}
+                        // getMyselfAsync={this.props.getMyselfAsync}/>
+                    }
+                         />
                     <Route exact path="/setting"
                      render={props => 
-                        <Setting 
-                            setting={this.props.setting}
-                            loadSetting={this.props.loadSetting}
-                            saveSetting={this.props.saveSetting} />}/>
+                        <Setting />
+                        // <Setting 
+                        //     setting={this.props.setting}
+                        //     loadSetting={this.props.loadSetting}
+                        //     saveSetting={this.props.saveSetting} />                            
+                            }/>
                 </Switch>
             </Wrapper>
         </Router>
     )}
 });
-App.propTypes= {
-    setting: PropTypes.any,
-    loadSetting: PropTypes.func,
-    saveSetting: PropTypes.func
-};
+// App.propTypes= {
+//     setting: PropTypes.any,
+//     myself: PropTypes.any,
+//     loadSetting: PropTypes.func,
+//     saveSetting: PropTypes.func,
+//     getMyselfAsync: PropTypes.func
+// };
 // setting={this.props.setting}
 // loadSetting={this.props.loadSetting}
 // saveSetting={this.props.saveSetting}

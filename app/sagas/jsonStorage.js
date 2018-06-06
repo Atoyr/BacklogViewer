@@ -8,7 +8,7 @@ import {
     loadSetting,
 } from "../actions";
 
-const saveSetting = (setting) =>{
+const saveSetting_hoge = (setting) =>{
     var json = {
         url: setting.url,
         apiKey: setting.apiKey
@@ -18,12 +18,11 @@ const saveSetting = (setting) =>{
         });
 };
 
-export function* saveSettingAsync() {
-    yield call(saveSetting(setting));
-    yield put(saveSetting());
-}
+// export function* saveSettingAsync() {
+//     // yield call(saveSetting({apiKey:''}));
+// }
 
-export function* loadSettingAsync(){
-    yield call(delay,100);
-}
+// export function* loadSettingAsync(){
+//     yield call(delay,100);
+// }
   

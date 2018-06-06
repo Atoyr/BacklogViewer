@@ -14,18 +14,40 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({},dispatch);
 };
 
-var Setting = CreateReact({
+var board = CreateReact({
   componentDidMount : function() {
+    return;
+  },
+  click: function(event) {
+    this.props.getMyselfAsync();
+    // const hoge = this.props.board;
+
     return;
   },
   render: function() {
     return (
         <div>
-            <p>board moc</p>
-        </div>    );
+            <div>
+             <p>{this.props.board.id}</p>
+             <p>{this.props.board.mailAddress}</p>
+             <p>{this.props.board.name}</p>
+            </div>
+            <button onClick={(event) => this.click(event)}> get myself </button>
+        </div>);
   },
   propTypes : {
+    board: PropTypes.shape
+    ({
+        id: PropTypes.any,
+        lang: PropTypes.any,
+        mailAddress: PropTypes.any,
+        name: PropTypes.any,
+        nulabAccount: PropTypes.any,
+        roleType: PropTypes.any,
+        userId: PropTypes.any,
+    }),
+    getMyselfAsync: PropTypes.func,
   }  
 })
 
-export default Setting;
+export default board;

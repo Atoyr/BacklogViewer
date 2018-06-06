@@ -11,3 +11,7 @@ export const LOAD_SETTING_ASYNC = 'LOAD_SETTING_ASYNC';
 export const loadSetting = createAction(LOAD_SETTING);
 export const loadSettingAsync = createAction(LOAD_SETTING_ASYNC);
 
+export const REQUEST_MYSELF = 'REQUEST_MYSELF';
+export const requestMyself = createAction(REQUEST_MYSELF);
+export const REQUEST_MYSELF_ASYNC = 'REQUEST_MYSELF_ASYNC';
+export const requestMyselfAsync = createAction(REQUEST_MYSELF_ASYNC);
