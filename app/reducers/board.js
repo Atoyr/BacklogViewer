@@ -4,7 +4,6 @@ import * as storageSync from 'electron-json-storage-sync';
 import {getMyself} from '../api/backlogApi'
 
 var initialState = {
-    myself:{
     id:'',
     lang:'',
     mailAddress:'',
@@ -12,13 +11,11 @@ var initialState = {
     nulabAccount:'',
     roleType:'',
     userId:'',
-    }
 }
 
 export default handleActions({
     REQUEST_MYSELF:(state,action) => {
         return Object.assign({}, state, {
-            myself:{
             id:action.payload.id,
             lang:action.payload.lang,
             mailAddress:action.payload.mailAddress,
@@ -26,6 +23,5 @@ export default handleActions({
             nulabAccount:action.payload.nulabAccount,
             roleType:action.payload.roleType,
             userId:action.payload.userId,
-            }
         })},
 },initialState);

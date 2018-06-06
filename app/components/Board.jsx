@@ -20,19 +20,32 @@ var board = CreateReact({
   },
   click: function(event) {
     this.props.getMyselfAsync();
-    const hoge = this.props.myself;
+    // const hoge = this.props.board;
 
     return;
   },
   render: function() {
     return (
         <div>
-            <div>{this.props.myself}</div>
+            <div>
+             <p>{this.props.board.id}</p>
+             <p>{this.props.board.mailAddress}</p>
+             <p>{this.props.board.name}</p>
+            </div>
             <button onClick={(event) => this.click(event)}> get myself </button>
         </div>);
   },
   propTypes : {
-    myself: PropTypes.any,
+    board: PropTypes.shape
+    ({
+        id: PropTypes.any,
+        lang: PropTypes.any,
+        mailAddress: PropTypes.any,
+        name: PropTypes.any,
+        nulabAccount: PropTypes.any,
+        roleType: PropTypes.any,
+        userId: PropTypes.any,
+    }),
     getMyselfAsync: PropTypes.func,
   }  
 })
