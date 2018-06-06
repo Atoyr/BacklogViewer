@@ -1,13 +1,21 @@
 import path from 'path'
 
+function getRestBaseUrl(spaceUrl){
+    return path.join(spaceUrl , '/api/v2/');
+}
+
 export function getMyself(spaceUrl,apiKey) {
-    let url = `${getRestBaseUrl(spaceUrl)}users/myself`;
+    let url = path.join(getRestBaseUrl(spaceUrl),'users/myself');
     url += `?apiKey=${apiKey}`;
     return fetch(url)
         .then(res => res.json())
         .catch(error => { error });
 }
 
-function getRestBaseUrl(spaceUrl){
-    return path.join(spaceUrl , '/api/v2/');
-}
+// export function getIcon(spaceUrl,apiKey,userId) {
+//     let url = path.join(getRestBaseUrl(spaceUrl),`users/${userId}/icon`);
+//     url += `?apiKey=${apiKey}`;
+//     return fetch(url)
+//         .then(res => res.json())
+//         .catch(error => { error });
+// }
