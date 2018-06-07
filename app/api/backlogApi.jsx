@@ -12,8 +12,17 @@ export function getMyself(spaceUrl,apiKey) {
         .catch(error => { error });
 }
 
+export function  getProjects(spaceUrl,apiKey) {
+    let url = path.join(getRestBaseUrl(spaceUrl),'projects');
+    url += `?apiKey=${apiKey}`;
+    console.log(url)
+    return fetch(url)
+        .then(res => res.json())
+        .catch(error => { error });
+}
+
 export function  getIssues(spaceUrl,apiKey) {
-    let url = path.join(getRestBaseUrl(spaceUrl),'issues ');
+    let url = path.join(getRestBaseUrl(spaceUrl),'issues');
     url += `?apiKey=${apiKey}`;
     console.log(url)
     return fetch(url)
