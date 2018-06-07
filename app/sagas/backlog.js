@@ -37,20 +37,3 @@ function* runRequestIssuesAsync() {
 export function* handleRequestIssuesAsync(){
     yield takeEvery(REQUEST_ISSUES_ASYNC,runRequestIssuesAsync);
 }
-
-function* runRequestIssuesAsync() {
-    const result = storageSync.get('config');
-    if (result.error) throw result.error;
-    if (result.status) {
-        const payload = yield call(getIssues,result.data.url,result.data.apiKey)
-        console.log(payload);
-        if(payload){
-            yield put(requestIssues(payload));
-        };
-    };
-}
-export function* handleRequestIssuesAsync(){
-    yield takeEvery(REQUEST_ISSUES_ASYNC,runRequestIssuesAsync);
-}
-
-
