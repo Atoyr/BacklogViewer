@@ -8,7 +8,7 @@ import Board from '../components/Board'
 
 const mapStateToProps = (state) => ({
         myself: state.myself,
-        // issues: state.issues
+        issues: state.issues
 })
 
 function mapDispatchToProps(dispatch) {

@@ -66,18 +66,14 @@ export default handleActions({
             console.log(array[i].startDate)
             console.log(array[i].dueDate)
             console.log(array[i].parentIssueId)
-            // console.log(createdUser: { ")
-            // console.log(    id: array[i].createdUser.id, ")
-            // console.log(    userId: array[i].createdUser.userId, ")
-            // console.log(    name: array[i].createdUser.name, ")
-            // console.log(}, ")
-            // console.log(created: array[i].created, ")
-            // console.log(updatedUser: { ")
-            // console.log(    id: array[i].updatedUser.id, ")
-            // console.log(    userId: array[i].updatedUser.userId, ")
-            // console.log(    name: array[i].updatedUser.name, ")
-            // console.log(}, ")
-            // updated: array[i].updated,
+            console.log(array[i].createdUser.id)
+            console.log(array[i].createdUser.userId)
+            console.log(array[i].createdUser.name)
+            console.log(array[i].created)
+            console.log(array[i].updatedUser.id)
+            console.log(array[i].updatedUser.userId)
+            console.log(array[i].updatedUser.name)
+            console.log(array[i].updated)
 
             newState.push({
                 id: array[i].id,
