@@ -1,12 +1,15 @@
 import { takeEvery, delay } from "redux-saga";
 import { put, call } from "redux-saga/effects";
-import { requestMyself} from "../actions";
-import { REQUEST_MYSELF_ASYNC} from "../actions";
-import { REQUEST_ISSUES_ASYNC} from "../actions";
+
+import { requestMyself} from "../actions/backlogAction";
+import { REQUEST_MYSELF_ASYNC} from "../actions/backlogAction";
+import { REQUEST_ISSUES_ASYNC, successIssues, failIssues} from "../actions/backlogAction";
+
 import { getMyself} from '../api/backlogApi'
-import { requestIssues} from "../actions";
 import { getIssues} from '../api/backlogApi'
+
 import * as storageSync from 'electron-json-storage-sync';
+
 
 function* runRequestMyselfAsync() {
     const result = storageSync.get('config');
@@ -30,8 +33,10 @@ function* runRequestIssuesAsync() {
         const payload = yield call(getIssues,result.data.url,result.data.apiKey)
         console.log(payload);
         if(payload){
-            yield put(requestIssues(payload));
-        };
+            yield put(successIssues(payload));
+        }else{
+            yield put(failIssues(payload));            
+        }
     };
 }
 export function* handleRequestIssuesAsync(){

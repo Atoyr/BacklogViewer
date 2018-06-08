@@ -8,6 +8,9 @@ var initialState = {
 }
 
 export default handleActions({
-    REQUEST_ISSUES:(state,action) => {
+    SUCCESS_ISSUES:(state,action) =>{
         return Object.assign({}, state, action.payload)},
+    FAIL_ISSUES:(state,action) =>{
+        return Object.assign({}, state, action.payload)},        
+    
 },initialState);
