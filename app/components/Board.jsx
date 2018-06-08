@@ -8,7 +8,7 @@ import {ListGroup, ListGroupItem} from 'react-bootstrap';
 import {Form, FormGroup, FormControl, ControlLabel, HelpBlock, HelpBlockProps} from 'react-bootstrap';
 import {Tab,NavItem,Nav} from 'react-bootstrap'
 import {loadSetting, saveSetting} from '../actions'
-
+import {Card} from './Card'
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({},dispatch);
@@ -16,6 +16,10 @@ const mapDispatchToProps = (dispatch) => {
 
 var board = CreateReact({
   componentDidMount : function() {
+    // var issues = this.props.issues.issues
+    // for(var i in issues){
+    //   this.cards.push(<Card id={issues[i].id} title={issues[i].summary}/>);
+    // }
     return;
   },
   click: function(event) {
@@ -30,13 +34,16 @@ var board = CreateReact({
 
     return;
   },
+  cards: [],
+
   render: function() {
     return (
         <div>
             <div>
-             <p>{this.props.myself.id}</p>
-             <p>{this.props.myself.mailAddress}</p>
-             <p>{this.props.myself.name}</p>
+              <p>{this.props.myself.id}</p>
+              <p>{this.props.myself.mailAddress}</p>
+              <p>{this.props.myself.name}</p>
+              {this.cards}
             </div>
             <button onClick={(event) => this.click(event)}> get myself </button>
             <button onClick={(event) => this.click2(event)}> get Issues </button>
@@ -53,6 +60,7 @@ var board = CreateReact({
         roleType: PropTypes.any,
         userId: PropTypes.any,
     }),
+    issues: PropTypes.any,
     getMyselfAsync: PropTypes.func,
     getIssuesAsync: PropTypes.func,
   }  
