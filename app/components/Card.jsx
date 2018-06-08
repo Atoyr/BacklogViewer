@@ -26,7 +26,7 @@ var card = CreateReact({
   propTypes : {
     card: PropTypes.shape
     ({
-        id : propTypes.any,
+        id : PropTypes.any,
         title: PropTypes.any,
         assainTo: PropTypes.any,
         assainToImage: PropTypes.any,
