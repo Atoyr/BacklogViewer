@@ -27,7 +27,6 @@ export default handleActions({
         var json = initialState;
         const result = storageSync.get('config');
 
-        if (result.error) throw result.error;
         if (result.status) {
             json.url = result.data.url
             json.apiKey = result.data.apiKey
