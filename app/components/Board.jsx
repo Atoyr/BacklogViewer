@@ -14,42 +14,35 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({},dispatch);
 };
 
-var board = CreateReact({
-  componentDidMount : function() {
-    // var issues = this.props.issues.issues
-    // for(var i in issues){
-    //   this.cards.push(<Card id={issues[i].id} title={issues[i].summary}/>);
-    // }
-    return;
-  },
-  click: function(event) {
-    this.props.getMyselfAsync();
-    // const hoge = this.props.board;
-
-    return;
-  },
-  click2: function(event) {
-    this.props.getIssuesAsync();
-    // const hoge = this.props.board;
-
-    return;
-  },
-  cards: [],
-
-  render: function() {
-    return (
-        <div>
-            <div>
-              <p>{this.props.myself.id}</p>
-              <p>{this.props.myself.mailAddress}</p>
-              <p>{this.props.myself.name}</p>
-              {this.cards}
-            </div>
-            <button onClick={(event) => this.click(event)}> get myself </button>
-            <button onClick={(event) => this.click2(event)}> get Issues </button>
-        </div>);
-  },
-  propTypes : {
+const board = ({myself,issues,getMyselfAsync,getIssuesAsync}) => (
+  <div>
+    <div>
+      <p>{myself.id}</p>
+      <p>{myself.mailAddress}</p>
+      <p>{myself.name}</p>
+    </div>
+    <div>
+      {issues.map(x =>
+        <Card
+        // key={x.keyId}
+        // {...x}
+        id={x.id}
+        />
+      )}
+    </div>
+        {/*  <Cards issues={this.props.issues} /> */}
+    <button onClick={(event) => getMyselfAsync(event)}> get myself </button>
+    <button onClick={(event) => getIssuesAsync(event)}> get Issues </button>
+  </div>
+);
+  // board.componentDidMount = () => {
+  //   // var issues = this.props.issues
+  //   // for(var i in issues){
+  //   //   this.cards.push(<Card id={issues[i].id} title={issues[i].summary}/>);
+  //   // }
+  //   return;
+  // }
+  board.propTypes = {
     myself: PropTypes.shape
     ({
         id: PropTypes.any,
@@ -60,10 +53,13 @@ var board = CreateReact({
         roleType: PropTypes.any,
         userId: PropTypes.any,
     }),
-    issues: PropTypes.any,
+    issues: PropTypes.array
+    // Of(PropTypes.shape({
+    //   id: PropTypes.number
+    //   }))
+    ,
     getMyselfAsync: PropTypes.func,
     getIssuesAsync: PropTypes.func,
-  }  
-})
+  }
 
 export default board;
