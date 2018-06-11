@@ -9,13 +9,18 @@ import {Form, FormGroup, FormControl, ControlLabel, HelpBlock, HelpBlockProps} f
 import {Tab,NavItem,Nav} from 'react-bootstrap'
 import {loadSetting, saveSetting} from '../actions'
 
-var card = ({id}) =>(
-  <div>
-  <p>{this.props.id}</p>
-  </div>
-)
-// card.propTypes = {
-//     id: PropTypes.any
-//   }
+var cards = CreateReact({
+    cards:[],
+    render: function() {
+        var issues = this.props.issues
+        for(var i in issues){
+            this.cards.push(<Card id={issues[i].id} title={issues[i].summary}/>);
+        }
+        return (this.cards);
+  }
+//   propTypes : {
+//     issues : PropTypes.array
+//   }  
+})
 
-export default card;
+export default cards;
