@@ -11,9 +11,11 @@ export const requestProjects = createAction(REQUEST_PROJECTS);
 export const REQUEST_PROJECTS_ASYNC = 'REQUEST_PROJECTS_ASYNC';
 export const requestProjectsAsync = createAction(REQUEST_PROJECTS_ASYNC);
 
-export const REQUEST_ISSUES = 'REQUEST_ISSUES';
-export const requestIssues = createAction(REQUEST_ISSUES);
 export const REQUEST_ISSUES_ASYNC = 'REQUEST_ISSUES_ASYNC';
 export const requestIssuesAsync = createAction(REQUEST_ISSUES_ASYNC);
+export const SUCCESS_ISSUES = 'SUCCESS_ISSUES';
+export const successIssues = createAction(SUCCESS_ISSUES);
+export const FAIL_ISSUES = 'FAIL_ISSUES';
+export const failIssues = createAction(FAIL_ISSUES);
 
 
