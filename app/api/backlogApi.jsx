@@ -4,6 +4,15 @@ function getRestBaseUrl(spaceUrl){
     return path.join(spaceUrl , '/api/v2/');
 }
 
+export function getSpaceInfo(spaceUrl,apiKey) {
+    let url = path.join(getRestBaseUrl(spaceUrl),'space');
+    url += `?apiKey=${apiKey}`;
+    return fetch(url)
+        .then(res => res.json())
+        .catch(error => { error });    
+}
+
+
 export function getMyself(spaceUrl,apiKey) {
     let url = path.join(getRestBaseUrl(spaceUrl),'users/myself');
     url += `?apiKey=${apiKey}`;

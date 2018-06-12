@@ -10,6 +10,23 @@ import { getIssues} from '../api/backlogApi'
 
 import * as storageSync from 'electron-json-storage-sync';
 
+function* runRequestIssuesAsync(act) {
+    console.log(act)
+    const result = storageSync.get('config');
+    if (result.error) throw result.error;
+    if (result.status) {
+        const payload = yield call(getIssues,result.data.url,result.data.apiKey)
+        console.log(payload);
+        if(payload){
+            yield put(successIssues(payload));
+        }else{
+            yield put(failIssues(payload));            
+        }
+    };
+}
+export function* handleRequestIssuesAsync(){
+    yield takeEvery(REQUEST_ISSUES_ASYNC,runRequestIssuesAsync);
+}
 
 function* runRequestMyselfAsync() {
     const result = storageSync.get('config');
@@ -26,7 +43,7 @@ export function* handleRequestMyselfAsync(){
     yield takeEvery(REQUEST_MYSELF_ASYNC,runRequestMyselfAsync);
 }
 
-function* runRequestIssuesAsync() {
+function* runRequestSpaceInfoAsync(actions) {
     const result = storageSync.get('config');
     if (result.error) throw result.error;
     if (result.status) {
@@ -39,6 +56,6 @@ function* runRequestIssuesAsync() {
         }
     };
 }
-export function* handleRequestIssuesAsync(){
+export function* handleRequestSpaceInfoAsync(){
     yield takeEvery(REQUEST_ISSUES_ASYNC,runRequestIssuesAsync);
 }
