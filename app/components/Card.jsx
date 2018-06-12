@@ -9,13 +9,11 @@ import {Form, FormGroup, FormControl, ControlLabel, HelpBlock, HelpBlockProps} f
 import {Tab,NavItem,Nav} from 'react-bootstrap'
 import {loadSetting, saveSetting} from '../actions'
 
-var card = ({id}) =>(
-  <div>
-  <p>{this.props.id}</p>
-  </div>
+const card = ({id}) =>(
+  <p>{id}</p>
 )
-// card.propTypes = {
-//     id: PropTypes.any
-//   }
+card.propTypes = {
+    id: PropTypes.any.isRequired
+  }
 
 export default card;
