@@ -17,9 +17,7 @@ const Wrapper = ({ children }) => (
   </div>
 );
 
-var App = CreateReact({
-    render: function(){
-    return(
+const App = () =>(
         <Router >
             <Wrapper>
                 <Switch>
@@ -42,8 +40,7 @@ var App = CreateReact({
                 </Switch>
             </Wrapper>
         </Router>
-    )}
-});
+);
 // App.propTypes= {
 //     setting: PropTypes.any,
 //     myself: PropTypes.any,
