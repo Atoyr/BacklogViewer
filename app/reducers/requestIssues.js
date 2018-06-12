@@ -86,42 +86,42 @@ export default handleActions({
 
             newState.push({
                 id: array[i].id,
-                // projectId: array[i].projectId,
-                // issueKey: array[i].issueKey,
+                projectId: array[i].projectId,
+                issueKey: array[i].issueKey,
                 keyId: array[i].keyId,
-                // issueType: { 
-                //     id: array[i].issueType.id, 
-                //     name: array[i].issueType.name, 
-                //     color: array[i].issueType.color, 
-                // }, 
-                // summary: array[i].summary, 
-                // priority: { 
-                //     id: array[i].priority.id, 
-                //     name: array[i].priority.name
-                // }, 
-                // status: { 
-                //     id: array[i].status.id, 
-                //     name: array[i].status.name 
-                // }, 
-                // assignee: { 
-                //     id: assignee.id, 
-                //     name: assignee.name 
-                // }, 
-                // startDate: array[i].startDate,
-                // dueDate: array[i].dueDate, 
-                // parentIssueId: array[i].parentIssueId, 
-                // createdUser: { 
-                //     id: array[i].createdUser.id, 
-                //     userId: array[i].createdUser.userId, 
-                //     name: array[i].createdUser.name, 
-                // }, 
-                // created: array[i].created, 
-                // updatedUser: { 
-                //     id: array[i].updatedUser.id, 
-                //     userId: array[i].updatedUser.userId, 
-                //     name: array[i].updatedUser.name, 
-                // }, 
-                // updated: array[i].updated,
+                issueType: { 
+                    id: array[i].issueType.id, 
+                    name: array[i].issueType.name, 
+                    color: array[i].issueType.color, 
+                }, 
+                summary: array[i].summary, 
+                priority: { 
+                    id: array[i].priority.id, 
+                    name: array[i].priority.name
+                }, 
+                status: { 
+                    id: array[i].status.id, 
+                    name: array[i].status.name 
+                }, 
+                assignee: { 
+                    id: assignee.id, 
+                    name: assignee.name 
+                }, 
+                startDate: array[i].startDate,
+                dueDate: array[i].dueDate, 
+                parentIssueId: array[i].parentIssueId, 
+                createdUser: { 
+                    id: array[i].createdUser.id, 
+                    userId: array[i].createdUser.userId, 
+                    name: array[i].createdUser.name, 
+                }, 
+                created: array[i].created, 
+                updatedUser: { 
+                    id: array[i].updatedUser.id, 
+                    userId: array[i].updatedUser.userId, 
+                    name: array[i].updatedUser.name, 
+                }, 
+                updated: array[i].updated,
             })
         }
         return newState},
