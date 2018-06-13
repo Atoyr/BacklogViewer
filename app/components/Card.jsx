@@ -11,23 +11,21 @@ import {Tab,NavItem,Nav} from 'react-bootstrap'
 import {loadSetting, saveSetting} from '../actions'
 import { start } from 'repl';
 
-const card = ({id,summary,startDate,dueDate,assigneeUser,color}) =>(
+const card = ({id,summary,startDate,dueDate,assigneeName}) =>(
   <div>
-    <Panel id={id} color={color}>
+    <Panel>
       <Panel.Heading>
-        <Panel.Title componentClass="h3">{summary}</Panel.Title>
+        <Panel.Title>{summary}</Panel.Title>
       </Panel.Heading>
       <Panel.Body>
-        <p>Start : {startDate}</p>
-        <p>DueDate : {dueDate}</p>
-        <p>Assign At : {assigneeUser} </p>
+        <p>Start : {(new Date(startDate)).toLocaleDateString("ja-JP")}</p>
+        <p>DueDate : {(new Date(dueDate)).toLocaleDateString("ja-JP")}</p>
+        <p>Assign At : {assigneeName} </p>
       </Panel.Body>
     </Panel>
   </div>
 )
 card.propTypes = {
-    id: PropTypes.any.isRequired,
-    color: PropTypes.string.isRequired
   }
 
 export default card;

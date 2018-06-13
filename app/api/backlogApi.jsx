@@ -36,6 +36,46 @@ export function  getIssues(spaceUrl,apiKey) {
     console.log(url)
     return fetch(url)
         .then(res => res.json())
+        .then(json =>{
+            var issues = [];
+            for(var i=0;i < json.length; i++){
+                let assignee = json[i].assignee;
+                if(assignee == null){
+                    assignee = {
+                        id: '',
+                        name:''
+                    }
+                }
+                issues.push({
+                    id: json[i].id,
+                    projectId: json[i].projectId,
+                    issueKey: json[i].issueKey,
+                    keyId: json[i].keyId,
+                    issueTypeId: json[i].issueType.id, 
+                    issueTypeName: json[i].issueType.name, 
+                    issueTypeColor: json[i].issueType.color, 
+                    summary: json[i].summary, 
+                    priorityId: json[i].priority.id, 
+                    priorityName: json[i].priority.name,
+                    statusId: json[i].status.id, 
+                    statusName: json[i].status.name,
+                    assigneeId:assignee.id, 
+                    assigneeName: assignee.name,
+                    startDate: json[i].startDate,
+                    dueDate: json[i].dueDate, 
+                    parentIssueId: json[i].parentIssueId, 
+                    createdId: json[i].createdUser.id, 
+                    createdUserId: json[i].createdUser.userId, 
+                    createdName: json[i].createdUser.name, 
+                    created: json[i].created, 
+                    updatedId: json[i].updatedUser.id, 
+                    updateUserId: json[i].updatedUser.userId, 
+                    updateUserName: json[i].updatedUser.name, 
+                    updated: json[i].updated,
+                })
+            }
+            return issues;
+        })
         .catch(error => { error });
 }
 
