@@ -49,33 +49,6 @@ export default handleActions({
         var newState = [];
         
         for(var i=0;i < array.length; i++){
-
-            // console.log(array[i].id)
-            // console.log(array[i].projectId)
-            // console.log(array[i].issueKey)
-            // console.log( array[i].keyId)
-            // console.log( array[i].issueType.id)
-            // console.log(array[i].issueType.name)
-            // console.log(array[i].issueType.color)
-            // console.log(array[i].summary)
-            // console.log(array[i].priority.id)
-            // console.log(array[i].priority.name)
-            // console.log(array[i].status.id)
-            // console.log(array[i].status.name)
-            // // console.log(array[i].assignee.id)
-            // // console.log(array[i].assignee.name)
-            // console.log(array[i].startDate)
-            // console.log(array[i].dueDate)
-            // console.log(array[i].parentIssueId)
-            // console.log(array[i].createdUser.id)
-            // console.log(array[i].createdUser.userId)
-            // console.log(array[i].createdUser.name)
-            // console.log(array[i].created)
-            // console.log(array[i].updatedUser.id)
-            // console.log(array[i].updatedUser.userId)
-            // console.log(array[i].updatedUser.name)
-            // console.log(array[i].updated)
-
             let assignee = array[i].assignee;
             if(assignee == null){
                 assignee = {
