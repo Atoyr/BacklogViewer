@@ -24,7 +24,3 @@ export const SUCCESS_ISSUES = 'SUCCESS_ISSUES';
 export const successIssues = createAction(SUCCESS_ISSUES);
 export const FAIL_ISSUES = 'FAIL_ISSUES';
 export const failIssues = createAction(FAIL_ISSUES);
-
-
-
-

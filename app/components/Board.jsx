@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import Card from './Card'
 
-const board = ({myself,issues,getMyselfAsync,getIssuesAsync}) => (
+const board = ({myself,issues,spaceInfo,getMyselfAsync,getIssuesAsync,getSpaceInfoAsync}) => (
   <div>
       <p>{myself.id}</p>
       <p>{myself.mailAddress}</p>
@@ -13,8 +13,10 @@ const board = ({myself,issues,getMyselfAsync,getIssuesAsync}) => (
         {...x}
         />
       )}
+      <p>{spaceInfo.name}</p>
     <button onClick={(event) => getMyselfAsync(event)}> get myself </button>
     <button onClick={(event) => getIssuesAsync(event)}> get Issues </button>
+    <button onClick={(event) => getSpaceInfoAsync(event)}> get SpaceInfo </button>
   </div>
 );
 board.propTypes = {
@@ -34,8 +36,12 @@ board.propTypes = {
       keyId: PropTypes.any,
     }))
   ,
+  spaceInfo: PropTypes.shape({
+    name: PropTypes.any
+  }),
   getMyselfAsync: PropTypes.func,
   getIssuesAsync: PropTypes.func,
+  getSpaceInfoAsync: PropTypes.func,
 }
 
 export default board;
