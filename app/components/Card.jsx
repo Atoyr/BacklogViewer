@@ -1,19 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-import CreateReact from 'create-react-class';
-import {bindActionCreators } from 'redux';
-import {Grid, Row, Col} from 'react-bootstrap';
-import {Button,ButtonGroup,} from 'react-bootstrap';
-import {ListGroup, ListGroupItem} from 'react-bootstrap';
-import {Form, FormGroup, FormControl, ControlLabel, HelpBlock, HelpBlockProps} from 'react-bootstrap';
-import {Tab,NavItem,Nav} from 'react-bootstrap'
-import {loadSetting, saveSetting} from '../actions'
+import {Panel} from 'react-bootstrap';
 
-const card = ({id}) =>(
-  <p>{id}</p>
+const card = ({id,summary,startDate,dueDate,assigneeName}) =>(
+  <div>
+    <Panel>
+      <Panel.Heading>
+        <Panel.Title>{summary}</Panel.Title>
+      </Panel.Heading>
+      <Panel.Body>
+        <p>開始日 : {(new Date(startDate)).toLocaleDateString("ja-JP")}</p>
+        <p>期日 　: {(new Date(dueDate)).toLocaleDateString("ja-JP")}</p>
+      </Panel.Body>
+      <Panel.Footer>
+        <p>担当者 : {assigneeName} </p>
+      </Panel.Footer>
+    </Panel>
+  </div>
 )
 card.propTypes = {
-    id: PropTypes.any.isRequired
   }
 
 export default card;

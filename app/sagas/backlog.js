@@ -21,7 +21,7 @@ function* runRequestIssuesAsync(action) {
         if(payload){
             yield put(successIssues(payload));
         }else{
-            yield put(failIssues(error));            
+            yield put(failIssues(payload));            
         }
     };
 }
