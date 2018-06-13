@@ -1,47 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-var initialState = []//{
-//     [{
-//         id:'',
-//         projectId:'',
-//         issueKey:'',
-//         keyId:'',
-//         issueType: { 
-//             id: '', 
-//             name: '', 
-//             color: '#000000', 
-//         }, 
-//         summary: '', 
-//         priority: { 
-//             id: '', 
-//             name: '' 
-//         }, 
-//         status: { 
-//             id: '', 
-//             name: '' 
-//         }, 
-//         assignee: { 
-//             id: '', 
-//             name: '' 
-//         }, 
-//         startDate: '', 
-//         dueDate: '', 
-//         parentIssueId: '', 
-//         createdUser: { 
-//             id: '', 
-//             userId: '', 
-//             name: '', 
-//         }, 
-//         created: '', 
-//         updatedUser: { 
-//             id: '', 
-//             userId: '', 
-//             name: '', 
-//         }, 
-//         updated: '', 
-//    }
-// ]
-//}
+var initialState = []
 
 export default handleActions({
     SUCCESS_ISSUES:(state,action) =>{
@@ -76,10 +35,8 @@ export default handleActions({
                     id: array[i].status.id, 
                     name: array[i].status.name 
                 }, 
-                assignee: { 
-                    id: assignee.id, 
-                    name: assignee.name 
-                }, 
+                assigneeId:assignee.id, 
+                assigneeName: assignee.name,
                 startDate: array[i].startDate,
                 dueDate: array[i].dueDate, 
                 parentIssueId: array[i].parentIssueId, 
