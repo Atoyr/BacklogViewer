@@ -16,27 +16,12 @@ function initialize () {
       width: 1080,
       minWidth: 680,
       height: 840,
-      title: app.getName()
+      title: app.getName(),
+      show:false,
     }
 
-    //   // 設定書き込み      
-    //   var json = {
-    //     apiKey: 'hogehoge'
-    //   };
-    //   storage.set('config', json, function (error) {
-    //       if (error) throw error;
-    //   });
-    // //設定読み込み
-    // storage.get('config', function (error, data) {
-    //   if (error) throw error;
-    //   if (Object.keys(data).length === 0) {
-    //     apiKey = 'hoge';
-    //   } else {
-    //     // apiKey = data.apiKey;
-    //   }
-    // });
-
     mainWindow = new BrowserWindow(windowOptions)
+    mainWindow.once('ready-to-show', () => { mainWindow.show(); });
     mainWindow.loadURL(path.join('file://', __dirname, './index.html'))
 
     // Launch fullscreen with DevTools open, usage: npm run debug
