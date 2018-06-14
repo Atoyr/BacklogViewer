@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import Card from './Card'
+import Member from './Member';
 
 const style = {
   display: 'flex',
@@ -20,11 +21,12 @@ const styleYellow = {
   padding: '10px'
 }
 
-const board = ({myself,issues,spaceInfo,getMyselfAsync,getIssuesAsync,getSpaceInfoAsync}) => (
+const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,getSpaceInfoAsync,getUserInfoAsync}) => (
   <div>
     <p>{myself.id}</p>
     <p>{myself.mailAddress}</p>
     <p>{myself.name}</p>
+    <Member name={userInfo.name} imgSrc={userInfo.icon} />
     <div style={style}>
       <div style={styleYellow}>
         {issues
@@ -61,6 +63,9 @@ const board = ({myself,issues,spaceInfo,getMyselfAsync,getIssuesAsync,getSpaceIn
     <button onClick={(event) => getMyselfAsync(event)}> get myself </button>
     <button onClick={(event) => getIssuesAsync(event)}> get Issues </button>
     <button onClick={(event) => getSpaceInfoAsync(event)}> get SpaceInfo </button>
+    <button onClick={(event) => 
+    getUserInfoAsync(myself.id)}> get UserInfo </button>
+
   </div>
 );
 board.propTypes = {
@@ -83,9 +88,11 @@ board.propTypes = {
   spaceInfo: PropTypes.shape({
     name: PropTypes.any
   }),
+  userInfo: PropTypes.any,
   getMyselfAsync: PropTypes.func,
   getIssuesAsync: PropTypes.func,
   getSpaceInfoAsync: PropTypes.func,
+  getUserInfoAsync: PropTypes.func,
 }
 
 export default board;
