@@ -2,8 +2,7 @@ import React from 'react';
 import {Panel} from 'react-bootstrap';
 
 const card = ({id,summary,startDate,dueDate,assigneeName}) =>(
-  <div>
-    <Panel>
+    <Panel draggable='true'>
       <Panel.Heading>
         <Panel.Title>{summary}</Panel.Title>
       </Panel.Heading>
@@ -15,7 +14,6 @@ const card = ({id,summary,startDate,dueDate,assigneeName}) =>(
         <p>担当者 : {assigneeName} </p>
       </Panel.Footer>
     </Panel>
-  </div>
 )
 card.propTypes = {
   }
