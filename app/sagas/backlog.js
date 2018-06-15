@@ -11,7 +11,6 @@ import { getMyself} from '../api/backlogApi'
 import { getIssues} from '../api/backlogApi'
 import { getSpaceInfo} from '../api/backlogApi'
 import { getUserInfo} from '../api/backlogApi'
-import { getUserIcon} from '../api/backlogApi'
 
 import * as storageSync from 'electron-json-storage-sync';
 
