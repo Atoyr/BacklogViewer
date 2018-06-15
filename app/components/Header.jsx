@@ -7,7 +7,7 @@ import { LinkContainer } from "react-router-bootstrap";
 var Header = CreateReact({
     render: function() {
         return (
-          <Navbar collapseOnSelect>
+          <Navbar fixedTop>
             <Navbar.Header>
               <Navbar.Brand>
                 <Link to="/">Backlog Viewer</Link>
@@ -33,14 +33,6 @@ var Header = CreateReact({
                   <MenuItem divider />
                   <MenuItem eventKey={3.3}>Separated link</MenuItem>
                 </NavDropdown>
-              </Nav>
-              <Nav pullRight>
-                <NavItem eventKey={1} href="#">
-                  Link Right
-                </NavItem>
-                <NavItem eventKey={2} href="#">
-                  Link Right
-                </NavItem>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
