@@ -6,6 +6,7 @@ import { requestIssuesAsync } from '../actions/backlogAction'
 import { requestSpaceInfoAsync } from '../actions/backlogAction'
 import { requestUserInfoAsync } from '../actions/backlogAction'
 import Board from '../components/Board'
+import { requestLoadSettingAsync} from '../actions/settingAction'
 
 
 const mapStateToProps = (state) => ({
@@ -20,7 +21,8 @@ function mapDispatchToProps(dispatch) {
         getMyselfAsync: (value) => {dispatch(requestMyselfAsync())},
         getIssuesAsync: (value) => {dispatch(requestIssuesAsync())},
         getSpaceInfoAsync: (value) => {dispatch(requestSpaceInfoAsync(value))},
-        getUserInfoAsync: (value) => {dispatch(requestUserInfoAsync(value))}
+        getUserInfoAsync: (value) => {dispatch(requestUserInfoAsync(value))},
+        loadSetting: (value) => {dispatch(requestLoadSettingAsync(value))}
     }
 }
 

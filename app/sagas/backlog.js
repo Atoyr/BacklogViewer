@@ -1,5 +1,5 @@
 import { takeEvery, delay } from "redux-saga";
-import { put, call } from "redux-saga/effects";
+import { put, call, select } from "redux-saga/effects";
 
 import { requestMyself} from "../actions/backlogAction";
 import { REQUEST_MYSELF_ASYNC} from "../actions/backlogAction";
@@ -15,10 +15,9 @@ import { getUserInfo} from '../api/backlogApi'
 import * as storageSync from 'electron-json-storage-sync';
 
 function* runRequestIssuesAsync(action) {
-    const result = storageSync.get('config');
-    if (result.error) throw result.error;
-    if (result.status) {
-        const payload = yield call(getIssues,result.data.url,result.data.apiKey)
+    const state = yield select(state => state.setting);
+    if (status) {
+        const payload = yield call(getIssues,state.url,state.apiKey)
         console.log(payload);
         if(payload){
             yield put(successIssues(payload));
@@ -32,14 +31,11 @@ export function* handleRequestIssuesAsync(){
 }
 
 function* runRequestMyselfAsync() {
-    const result = storageSync.get('config');
-    if (result.error) throw result.error;
-    if (result.status) {
-        const payload = yield call(getMyself,result.data.url,result.data.apiKey)
-        console.log(payload);
-        if(payload){
-            yield put(requestMyself(payload));
-        };
+    const state = yield select(state => state.setting);
+    const payload = yield call(getMyself,state.url,state.apiKey)
+    console.log(payload);
+    if(payload){
+        yield put(requestMyself(payload));
     };
 }
 export function* handleRequestMyselfAsync(){
@@ -47,10 +43,9 @@ export function* handleRequestMyselfAsync(){
 }
 
 function* runRequestSpaceInfoAsync(action) {
-    const result = storageSync.get('config');
-    if (result.error) throw result.error;
-    if (result.status) {
-        const payload = yield call(getSpaceInfo,result.data.url,result.data.apiKey)
+    const state = yield select(state => state.setting);
+    if (status) {
+        const payload = yield call(getSpaceInfo,state.url,state.apiKey)
         console.log(payload);
         if(payload){
             yield put(successSpaceInfo(payload));
@@ -64,10 +59,9 @@ export function* handleRequestSpaceInfoAsync(){
 }
 
 function* runRequestUserInfoAsync(action) {
-    const result = storageSync.get('config');
-    if (result.error) throw result.error;
-    if (result.status) {
-        const userInfo = yield call(getUserInfo,result.data.url,result.data.apiKey,action.payload)
+    const state = yield select(state => state.setting);
+    if (status) {
+        const userInfo = yield call(getUserInfo,state.url,state.apiKey,action.payload)
         console.log(userInfo[0]);
         console.log(userInfo[1]);
         if(userInfo){

@@ -2,9 +2,6 @@ const path = require('path');
 const {app, BrowserWindow} = require('electron');
 const debug = /--debug/.test(process.argv[2]);
 import {ipcMain} from "electron";
-// import * as backlogApi from './containers/backlogApi.jsx';
-// import httpHelper from './containers/httpHelper.jsx';
-import * as storage from 'electron-json-storage';
 
 var mainWindow = null;
 var user = '';

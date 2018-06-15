@@ -21,7 +21,9 @@ const styleYellow = {
   padding: '10px'
 }
 
-const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,getSpaceInfoAsync,getUserInfoAsync}) => (
+const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,getSpaceInfoAsync,getUserInfoAsync,loadSetting}) => {
+  loadSetting('');
+  return(
   <div>
     <p>{myself.id}</p>
     <p>{myself.mailAddress}</p>
@@ -70,7 +72,7 @@ const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,g
     <button onClick={(event) => getUserInfoAsync(myself.id)}> get UserInfo </button>
 
   </div>
-);
+)};
 board.propTypes = {
   myself: PropTypes.shape
   ({

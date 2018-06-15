@@ -8,6 +8,18 @@ var initialState = {
 }
 
 export default handleActions({
+    SUCCESS_SAVE_SETTING:(state,action) =>{
+        return Object.assign({}, state, action.payload)
+    },
+    SUCCESS_LOAD_SETTING:(state,action) =>{
+        return Object.assign({}, state, action.payload)
+    },
+    // FAIL_SAVE_SETTING:(state,action) =>{
+
+    // },
+    // FAIL_LOAD_SETTING:(state,action) =>{
+
+    // },
     SAVE_SETTING:(state,action) =>{
         // 設定書き込み      
         var json = {
