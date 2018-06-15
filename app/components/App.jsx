@@ -8,10 +8,14 @@ import Setting from '../containers/Setting'
 import Board from '../containers/Board'
 import { BrowserRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
 
+const style = {
+    paddingTop: '50px'
+}
+
 const Wrapper = ({ children }) => (
     <div className="wrapper">
     <Header />
-    <main>
+    <main style={style}>
       { children }
     </main>
   </div>
