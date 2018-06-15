@@ -12,12 +12,30 @@ export function getSpaceInfo(spaceUrl,apiKey) {
         .catch(error => { error });    
 }
 
-
 export function getMyself(spaceUrl,apiKey) {
     let url = path.join(getRestBaseUrl(spaceUrl),'users/myself');
     url += `?apiKey=${apiKey}`;
     return fetch(url)
         .then(res => res.json())
+        .catch(error => { error });
+}
+
+export function getUserInfo(spaceUrl, apiKey, userId) {
+    let url = path.join(getRestBaseUrl(spaceUrl),`users/${userId}`);
+    url += `?apiKey=${apiKey}`;
+    return Promise.all([
+            fetch(url)
+            .then(res => res.json())
+            .catch(error => { error }),
+            getUserIcon(spaceUrl, apiKey, userId)
+        ]);
+}
+
+export function getUserIcon(spaceUrl, apiKey, userId) {
+    let url = path.join(getRestBaseUrl(spaceUrl),`users/${userId}/icon`);
+    url += `?apiKey=${apiKey}`;
+    return fetch(url)
+        .then(res => res.blob())
         .catch(error => { error });
 }
 
