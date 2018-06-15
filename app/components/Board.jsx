@@ -67,8 +67,7 @@ const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,g
     <button onClick={(event) => getMyselfAsync(event)}> get myself </button>
     <button onClick={(event) => getIssuesAsync(event)}> get Issues </button>
     <button onClick={(event) => getSpaceInfoAsync(event)}> get SpaceInfo </button>
-    <button onClick={(event) => 
-    getUserInfoAsync(myself.id)}> get UserInfo </button>
+    <button onClick={(event) => getUserInfoAsync(myself.id)}> get UserInfo </button>
 
   </div>
 );
