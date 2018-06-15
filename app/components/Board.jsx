@@ -26,7 +26,11 @@ const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,g
     <p>{myself.id}</p>
     <p>{myself.mailAddress}</p>
     <p>{myself.name}</p>
-    <Member name={userInfo.name} imgSrc={userInfo.icon} />
+    {userInfo
+      .filter(x=>x.id == myself.id)
+      .map(x => <Member key={x.id} id={x.id} name={x.name} imgSrc={x.icon} />)
+    
+    }
     <div style={style}>
       <div style={styleYellow}>
         {issues
