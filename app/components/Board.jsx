@@ -21,8 +21,10 @@ const styleYellow = {
   padding: '10px'
 }
 
-const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,getSpaceInfoAsync,getUserInfoAsync,loadSetting}) => {
-  loadSetting('');
+class board extends React.Component{
+  render(){
+    const {myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,getSpaceInfoAsync,getUserInfoAsync,loadSetting}
+    = this.props
   return(
   <div>
     <p>{myself.id}</p>
@@ -70,9 +72,11 @@ const board = ({myself,issues,spaceInfo,userInfo,getMyselfAsync,getIssuesAsync,g
     <button onClick={(event) => getIssuesAsync(event)}> get Issues </button>
     <button onClick={(event) => getSpaceInfoAsync(event)}> get SpaceInfo </button>
     <button onClick={(event) => getUserInfoAsync(myself.id)}> get UserInfo </button>
+  </div>)
+  }
 
-  </div>
-)};
+};
+
 board.propTypes = {
   myself: PropTypes.shape
   ({
