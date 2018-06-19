@@ -12,7 +12,7 @@ const style = {
     paddingTop: '50px'
 }
 
-class Wrapper extends React.Component{
+class hoge extends React.Component{
     render(){
         return (
         <div className="wrapper">
@@ -22,9 +22,16 @@ class Wrapper extends React.Component{
             </main>
         </div>)}
     componentWillMount(){
-        this.props.requestLoadSettingAsync();
+        this.props.requestLoadSettingAsync(this.props.history);
     }
+    // componentDidMount(){
+    //     if(this.props.setting.url == ''){
+    //         this.props.history.push('/setting');
+    //     }
+    // }
 }
+
+const Wrapper = withRouter(hoge)
 
 
 const App = ({setting,requestLoadSettingAsync}) => (

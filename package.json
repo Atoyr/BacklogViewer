@@ -34,6 +34,7 @@
     "react-bootstrap": "^0.32.1",
     "react-history": "^0.18.2",
     "react-redux": "^5.0.7",
+    "react-router-redux": "^4.0.8",
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
     "redux-logger": "^3.0.6",
