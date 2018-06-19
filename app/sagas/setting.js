@@ -12,24 +12,25 @@ import {
 } from "../actions/settingAction";
 import * as storageSync from 'electron-json-storage-sync';
 
-function* runRequestSaveSettingAsync() {
-    const result = storageSync.get('config');
-    if (result.error) throw result.error;
+function* runRequestSaveSettingAsync(json) {
+    const result = storageSync.set('config', json);
     if (result.status) {
         yield put(successSaveSetting(result.data));
-    };
+    } else {
+        yield put(failSaveSetting(result.error));
+    }
 }
 export function* handleRequestSaveSettingAsync(){
     yield takeEvery(REQUEST_SAVE_SETTING_ASYNC,runRequestSaveSettingAsync);
 }
 
-function* runRequestLoadSettingAsync() {
-    const result = storageSync.get('config');
-    if (result.error) {
-        yield put(failLoadSetting(result.error));
-    }
-    else {
+function* runRequestLoadSettingAsync(act) {
+    console.log(act)
+    const result = storageSync.get('config')
+    if (result.status) {
         yield put(successLoadSetting(result.data));
+    } else {
+        yield put(failLoadSetting(result.error));
     }
 }
 export function* handleRequestLoadSettingAsync(){

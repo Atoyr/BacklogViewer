@@ -7,7 +7,6 @@ import Header from './Header'
 import Setting from '../containers/Setting'
 import Board from '../containers/Board'
 import { BrowserRouter as Router, Route, Switch,  Link, withRouter } from 'react-router-dom';
-import { requestLoadSettingAsync} from '../actions/settingAction'
 
 const style = {
     paddingTop: '50px'
@@ -28,30 +27,23 @@ class Wrapper extends React.Component{
 }
 
 
-const App = ({setting,requestLoadSettingAsync}) =>{
-    return (
+const App = ({setting,requestLoadSettingAsync}) => (
     <Router>
       <div style={{padding: "60px"}}>
         <Wrapper 
-        requestLoadSettingAsync={requestLoadSettingAsync}
-        setting={setting}>
+            requestLoadSettingAsync={requestLoadSettingAsync}
+            setting={setting} >
             <Switch>
-                <Route exact path="/Setting"
-                    component={settingProps => 
-                    <Setting />
-                        }/>
-                <Route exact path="/Board"
-                    component={boardProps => 
-                    <Board />
-                    }/>
-                <Route exact path="/"
-                    component={boardProps => 
-                    <Board />
-                    }/>
+                <Route exact path="/setting" 
+                    component={Setting} />       
+                <Route exact path="/board"
+                    component={Board} />       
+                <Route 
+                    component={Board} />       
             </Switch>
         </Wrapper>
       </div>
     </Router>
-)};
+);
 
 export default App;

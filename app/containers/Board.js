@@ -7,7 +7,7 @@ import { requestSpaceInfoAsync } from '../actions/backlogAction'
 import { requestUserInfoAsync } from '../actions/backlogAction'
 import Board from '../components/Board'
 import { requestLoadSettingAsync} from '../actions/settingAction'
-
+import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state) => ({
         myself: state.myself,
@@ -26,4 +26,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Board)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Board));
