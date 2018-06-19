@@ -16,7 +16,7 @@ var Header = CreateReact({
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
-                <LinkContainer to="/">
+                <LinkContainer to="/board">
                   <NavItem eventKey={1}>
                     Board
                   </NavItem>

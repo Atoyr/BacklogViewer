@@ -8,28 +8,16 @@ var initialState = {
 }
 
 export default handleActions({
-    SAVE_SETTING:(state,action) =>{
-        // 設定書き込み      
-        var json = {
-            url: action.payload.url,
-            apiKey: action.payload.apiKey
-        };
-        storage.set('config', json, function (error) {
-            if (error) throw error;
-        });
-        console.log('SAVE_SETTING')
-        return Object.assign({}, state, {
-            url: action.payload.url,
-            apiKey: action.payload.apiKey
-        })},
-    LOAD_SETTING:(state,action) => {
-        //設定読み込み
-        var json = initialState;
-        const result = storageSync.get('config');
-
-        if (result.status) {
-            json.url = result.data.url
-            json.apiKey = result.data.apiKey
-        };
-        return Object.assign({}, state, json)},
+    SUCCESS_SAVE_SETTING:(state,action) =>{
+        return Object.assign({}, state, action.payload)
+    },
+    SUCCESS_LOAD_SETTING:(state,action) =>{
+        return Object.assign({}, state, action.payload)
+    },
+    FAIL_SAVE_SETTING:(state,action) =>{
+        return initialState;
+    },
+    FAIL_LOAD_SETTING:(state,action) =>{
+        return initialState;
+    },
 },initialState);

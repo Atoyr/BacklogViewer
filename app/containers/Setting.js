@@ -1,19 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {loadSetting, saveSetting} from '../actions'
+import {requestLoadSettingAsync, requestSaveSettingAsync} from '../actions/settingAction'
 import Setting from '../components/Setting'
+import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state) =>({
     setting: state.setting
 })
 function mapDispatchToProps(dispatch) {
     return {
-        loadSetting: (value) => {dispatch(loadSetting(value))},
-        saveSetting: (value) => {dispatch(saveSetting(value))}
+        loadSetting: (value) => {dispatch(requestLoadSettingAsync(value))},
+        saveSetting: (value) => {dispatch(requestSaveSettingAsync(value))}
     }
 }
-export default connect(
-    mapStateToProps
+export default withRouter(connect(
+     mapStateToProps
     ,mapDispatchToProps
-)(Setting)
+)(Setting))
