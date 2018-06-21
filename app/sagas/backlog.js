@@ -12,8 +12,6 @@ import { getIssues} from '../api/backlogApi'
 import { getSpaceInfo} from '../api/backlogApi'
 import { getUserInfo} from '../api/backlogApi'
 
-import * as storageSync from 'electron-json-storage-sync';
-
 function* runRequestIssuesAsync(action) {
     const state = yield select(state => state.setting);
     const payload = yield call(getIssues,state.url,state.apiKey)
@@ -57,18 +55,9 @@ export function* handleRequestSpaceInfoAsync(){
 function* runRequestUserInfoAsync(action) {
     const state = yield select(state => state.setting);
     const userInfo = yield call(getUserInfo,state.url,state.apiKey,action.payload)
-    console.log(userInfo[0]);
-    console.log(userInfo[1]);
+    console.log(userInfo)
     if(userInfo){
-        const payload = {
-            id: userInfo[0].id, 
-            userId: userInfo[0].userId, 
-            name: userInfo[0].name, 
-            roleType: userInfo[0].roleType, 
-            lang: userInfo[0].lang, 
-            mailAddress: userInfo[0].mailAddress,
-            icon: URL.createObjectURL(userInfo[1])}
-        yield put(successUserInfo(payload));
+        yield put(successUserInfo(userInfo));
     }else{
         yield put(failUserInfo(userInfo));            
     }

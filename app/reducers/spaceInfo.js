@@ -10,7 +10,8 @@ var initialState =
     reportSendTime: '', 
     textFormattingRule: '', 
     created: '', 
-    updated: '' 
+    updated: '',
+    icon: ''
 }
 export default handleActions({
     SUCCESS_SPACE_INFO:(state,action) =>{

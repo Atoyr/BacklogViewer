@@ -7,9 +7,25 @@ function getRestBaseUrl(spaceUrl){
 export function getSpaceInfo(spaceUrl,apiKey) {
     let url = path.join(getRestBaseUrl(spaceUrl),'space');
     url += `?apiKey=${apiKey}`;
-    return fetch(url)
-        .then(res => res.json())
-        .catch(error => { error });    
+    return Promise.all([
+            fetch(url)
+            .then(res => res.json())
+            .catch(error => { error }),
+            getSpaceIcon(spaceUrl, apiKey)])
+        .then(spaceInfo =>{
+            return{
+            spaceKey: spaceInfo[0].spaceKey, 
+            name: spaceInfo[0].name, 
+            ownerId: spaceInfo[0].ownerId, 
+            lang: spaceInfo[0].lang, 
+            timezone: spaceInfo[0].timezone, 
+            reportSendTime: spaceInfo[0].reportSendTime, 
+            textFormattingRule: spaceInfo[0].textFormattingRule, 
+            created: spaceInfo[0].created, 
+            updated: spaceInfo[0].updated, 
+            icon: URL.createObjectURL(spaceInfo[1])
+            }
+        })
 }
 
 export function  getSpaceIcon(spaceUrl,apiKey) {
@@ -33,10 +49,21 @@ export function getUserInfo(spaceUrl, apiKey, userId) {
     url += `?apiKey=${apiKey}`;
     return Promise.all([
             fetch(url)
-            .then(res => res.json())
-            .catch(error => { error }),
-            getUserIcon(spaceUrl, apiKey, userId)
-        ]);
+                .then(res => res.json())
+                .catch(error => { error }),
+            getUserIcon(spaceUrl, apiKey, userId)]
+    )
+    .then(userInfo =>{
+        return {
+            id: userInfo[0].id, 
+            userId: userInfo[0].userId, 
+            name: userInfo[0].name, 
+            roleType: userInfo[0].roleType, 
+            lang: userInfo[0].lang, 
+            mailAddress: userInfo[0].mailAddress,
+            icon: URL.createObjectURL(userInfo[1])}
+    })
+    .catch(error => {error})
 }
 
 export function getUserIcon(spaceUrl, apiKey, userId) {
