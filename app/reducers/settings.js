@@ -12,6 +12,7 @@ export default handleActions({
         return Object.assign({}, state, action.payload)
     },
     SUCCESS_LOAD_SETTING:(state,action) =>{
+        
         return Object.assign({}, state, action.payload)
     },
     FAIL_SAVE_SETTING:(state,action) =>{

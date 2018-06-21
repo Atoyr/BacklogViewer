@@ -1,16 +1,27 @@
 import React from 'react'
 import CreateReact from 'create-react-class'
 import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap'
+import {Image} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 import { LinkContainer } from "react-router-bootstrap";
 
-var Header = CreateReact({
-    render: function() {
+const imageSize ={
+  width:'30px',
+  height:'30px'
+}
+
+class Header extends React.Component{
+    render() {
         return (
           <Navbar fixedTop>
             <Navbar.Header>
-              <Navbar.Brand>
-                <Link to="/">Backlog Viewer</Link>
+              <Navbar.Brand>                
+                <Link to="/">
+                  <div>
+                    <Image src={this.props.spaceInfo.icon} rounded style={imageSize}/>
+                    {this.props.spaceInfo.name}
+                  </div>
+                </Link>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
@@ -38,6 +49,9 @@ var Header = CreateReact({
           </Navbar>
         );
       }
-})
+      componentWillMount(){
+        this.props.getSpaceInfoAsync();
+    }
+}
 
 export default Header;
