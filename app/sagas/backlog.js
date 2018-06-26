@@ -6,11 +6,13 @@ import { REQUEST_MYSELF_ASYNC} from "../actions/backlogAction";
 import { REQUEST_ISSUES_ASYNC, successIssues, failIssues} from "../actions/backlogAction";
 import { REQUEST_SPACE_INFO_ASYNC, successSpaceInfo, failSpaceInfo} from "../actions/backlogAction";
 import { REQUEST_USER_INFO_ASYNC, successUserInfo, failUserInfo} from "../actions/backlogAction";
+import { REQUEST_PROJECTS_ASYNC, successProjectsInfo, failProjectsInfo} from "../actions/backlogAction";
 
 import { getMyself} from '../api/backlogApi'
 import { getIssues} from '../api/backlogApi'
 import { getSpaceInfo} from '../api/backlogApi'
 import { getUserInfo} from '../api/backlogApi'
+import { getProjects} from '../api/backlogApi'
 
 function* runRequestIssuesAsync(action) {
     const state = yield select(state => state.setting);
@@ -65,3 +67,19 @@ function* runRequestUserInfoAsync(action) {
 export function* handleRequestUserInfoAsync(){
     yield takeEvery(REQUEST_USER_INFO_ASYNC,runRequestUserInfoAsync);
 }
+
+
+function* runRequestProjectsAsync(action) {
+    const state = yield select(state => state.setting);
+    const userInfo = yield call(getProjects,state.url,state.apiKey)
+    console.log(userInfo)
+    if(userInfo){
+        yield put(successProjectsInfo(userInfo));
+    }else{
+        yield put(failProjectsInfo(userInfo));            
+    }
+}
+export function* handleRequestProjectsAsync(){
+    yield takeEvery(REQUEST_PROJECTS_ASYNC,runRequestProjectsAsync);
+}
+

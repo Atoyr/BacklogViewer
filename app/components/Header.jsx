@@ -4,6 +4,8 @@ import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap'
 import {Image} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 import { LinkContainer } from "react-router-bootstrap";
+import { FormGroup, ControlLabel, FormControl } from "react-router-bootstrap";
+
 
 const imageSize ={
   width:'30px',
@@ -37,12 +39,17 @@ class Header extends React.Component{
                     Setting
                   </NavItem>
                 </LinkContainer>
-                <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                  <MenuItem eventKey={3.1}>Action</MenuItem>
-                  <MenuItem eventKey={3.2}>Another action</MenuItem>
-                  <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                  <MenuItem divider />
-                  <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                <NavDropdown pullRight 
+                title={this.props.selectProject.name} 
+                id={this.props.selectProject.id} 
+                eventKey={this.props.selectProject.id} 
+                onSelect=
+                {x => {
+                  this.props.getProjectInfoAsync()
+                  this.props.selectedProject({key:x,projects:this.props.projects})
+                  }
+                }>
+                  {this.props.projects.map(x => <MenuItem key={x.id} eventKey={x.projectKey}>{x.name}</MenuItem>)}
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
@@ -50,7 +57,9 @@ class Header extends React.Component{
         );
       }
       componentWillMount(){
+        console.log(this.props)
         this.props.getSpaceInfoAsync();
+        this.props.getProjectInfoAsync();
     }
 }
 

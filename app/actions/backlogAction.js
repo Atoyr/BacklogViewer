@@ -20,10 +20,14 @@ export const requestMyself = createAction(REQUEST_MYSELF);
 export const REQUEST_MYSELF_ASYNC = 'REQUEST_MYSELF_ASYNC';
 export const requestMyselfAsync = createAction(REQUEST_MYSELF_ASYNC);
 
-export const REQUEST_PROJECTS = 'REQUEST_PROJECTS';
-export const requestProjects = createAction(REQUEST_PROJECTS);
 export const REQUEST_PROJECTS_ASYNC = 'REQUEST_PROJECTS_ASYNC';
 export const requestProjectsAsync = createAction(REQUEST_PROJECTS_ASYNC);
+export const SUCCESS_PROJECTS_INFO = 'SUCCESS_PROJECTS_INFO';
+export const successProjectsInfo = createAction(SUCCESS_PROJECTS_INFO);
+export const FAIL_PROJECTS_INFO = 'FAIL_PROJECTS_INFO';
+export const failProjectsInfo = createAction(FAIL_PROJECTS_INFO);
+export const SELECTED_PROJECT = 'SELECTED_PROJECT'
+export const selectedProject = createAction(SELECTED_PROJECT);
 
 export const REQUEST_ISSUES_ASYNC = 'REQUEST_ISSUES_ASYNC';
 export const requestIssuesAsync = createAction(REQUEST_ISSUES_ASYNC);
