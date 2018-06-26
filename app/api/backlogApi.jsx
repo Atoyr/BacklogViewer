@@ -131,12 +131,3 @@ export function  getIssues(spaceUrl,apiKey) {
         })
         .catch(error => { error });
 }
-
-
-// export function getIcon(spaceUrl,apiKey,userId) {
-//     let url = path.join(getRestBaseUrl(spaceUrl),`users/${userId}/icon`);
-//     url += `?apiKey=${apiKey}`;
-//     return fetch(url)
-//         .then(res => res.json())
-//         .catch(error => { error });
-// }

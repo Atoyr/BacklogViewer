@@ -4,6 +4,8 @@ import myself from './requestMyself';
 import issues from './requestIssues';
 import spaceInfo from './spaceInfo';
 import userInfo from './userInfo';
+import projects from './projects';
+import {selectedProject} from './projects';
 
 export default combineReducers({
     setting,
@@ -11,4 +13,6 @@ export default combineReducers({
     issues,
     spaceInfo,
     userInfo,
+    projects,
+    selectedProject
 });
