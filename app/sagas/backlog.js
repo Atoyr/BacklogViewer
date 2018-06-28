@@ -12,6 +12,7 @@ import { getMyself} from '../api/backlogApi'
 import { getIssues} from '../api/backlogApi'
 import { getSpaceInfo} from '../api/backlogApi'
 import { getUserInfo} from '../api/backlogApi'
+import { getUsersInfo} from '../api/backlogApi'
 import { getProjects} from '../api/backlogApi'
 
 function* runRequestIssuesAsync(action) {
@@ -65,9 +66,22 @@ function* runRequestUserInfoAsync(action) {
     }
 }
 export function* handleRequestUserInfoAsync(){
-    yield takeEvery(REQUEST_USER_INFO_ASYNC,runRequestUserInfoAsync);
+    yield takeEvery('HOGEHOGE',runRequestUserInfoAsync);
 }
 
+function* runRequestUsersInfoAsync(action) {
+    const state = yield select(state => state.setting);
+    const userInfo = yield call(getUsersInfo,state.url,state.apiKey)
+    console.log(userInfo)
+    if(userInfo){
+        yield put(successUserInfo(userInfo));
+    }else{
+        yield put(failUserInfo(userInfo));            
+    }
+}
+export function* handleRequestUsersInfoAsync(){
+    yield takeEvery(REQUEST_USER_INFO_ASYNC,runRequestUsersInfoAsync);
+}
 
 function* runRequestProjectsAsync(action) {
     const state = yield select(state => state.setting);

@@ -9,7 +9,7 @@ const member = ({id,name,imgSrc}) =>(
             overlay={<Tooltip id={id}>{name}</Tooltip>}
             delayShow={300}
             delayHide={150}>
-            <Image src={imgSrc} circle />
+            <Image src={imgSrc} circle width='30px' height='30px'/>
         </OverlayTrigger>
     </p>
 );

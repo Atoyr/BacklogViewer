@@ -4,7 +4,20 @@ var initialState = []
 
 export default handleActions({
     SUCCESS_USER_INFO:(state,action) =>{
-        return [...state,action.payload]},
+        var newstate = [];
+        if(Array.isArray(action.payload))
+        {
+            const userIds = action.payload.map(x => x.userId)
+            const tempstate = state.filter(x => !userIds.indexOf(x.userId))
+            newstate = tempstate.concat(action.payload)
+        }else{
+            newstate = state.filter(x => x.userId != action.payload.userId);
+            newstate.push(action.payload);
+        }
+        newstate.sort((a,b) => a.userId < b.userId ? -1 : 1);
+        console.log(newstate)
+        return newstate;
+    },
     FAIL_USER_INFO:(state,action) =>{
         return initialState},
 },initialState);

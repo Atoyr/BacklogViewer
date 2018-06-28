@@ -1,4 +1,5 @@
 import path from 'path'
+import { promises } from 'fs';
 
 function getRestBaseUrl(spaceUrl){
     return path.join(spaceUrl , '/api/v2/');
@@ -43,6 +44,18 @@ export function getMyself(spaceUrl,apiKey) {
         .then(res => res.json())
         .catch(error => { error });
 }
+
+export async function getUsersInfo(spaceUrl, apiKey) {
+    let url = path.join(getRestBaseUrl(spaceUrl),`users`);
+    url += `?apiKey=${apiKey}`;
+    let body = await fetch(url); 
+    let userInfo = await Promise.all((await body.json())
+                    .map(async x =>{
+                    x.icon = URL.createObjectURL(await getUserIcon(spaceUrl, apiKey, x.id));
+                    return x}));    
+    return userInfo;
+}
+
 
 export function getUserInfo(spaceUrl, apiKey, userId) {
     let url = path.join(getRestBaseUrl(spaceUrl),`users/${userId}`);

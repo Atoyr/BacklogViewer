@@ -7,7 +7,7 @@ import { handleRequestUserInfoAsync} from "./backlog";
 import { handleRequestProjectsAsync} from "./backlog";
 import { handleRequestLoadSettingAsync} from './setting';
 import { handleRequestSaveSettingAsync} from './setting';
-
+import { handleRequestUsersInfoAsync} from './backlog';
 export default function* rootSaga() {
   yield fork(initialize)
   yield fork(handleRequestMyselfAsync),
@@ -16,5 +16,6 @@ export default function* rootSaga() {
   yield fork(handleRequestUserInfoAsync),
   yield fork(handleRequestLoadSettingAsync),
   yield fork(handleRequestSaveSettingAsync),
-  yield fork(handleRequestProjectsAsync)
+  yield fork(handleRequestProjectsAsync),
+  yield fork(handleRequestUsersInfoAsync)
 }
