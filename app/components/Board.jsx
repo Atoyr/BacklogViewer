@@ -31,8 +31,10 @@ class board extends React.Component{
     <p>{myself.mailAddress}</p>
     <p>{myself.name}</p>
     {userInfo
-      .filter(x=>x.id == myself.id)
-      .map(x => <Member key={x.id} id={x.id} name={x.name} imgSrc={x.icon} />)
+      // .filter(x=>x.id == myself.id)
+      .map(x => 
+      <Member key={x.userId} id={x.id} name={x.name} imgSrc={x.icon} />
+    )
     
     }
     <div style={style}>
@@ -56,16 +58,20 @@ class board extends React.Component{
           />
         )}
       </div>
-      <div style={styleGreen}>
+      {/* <div style={styleGreen}>
         {issues
           .filter(x => x.statusId == '3')
-          .map(x =>
-          <Card
+          .map(x =>{
+          const filter = userInfo.filter(node => node.userId==x.userId)
+          const icon = filter.length > 0 ? filter[0] : '';
+
+          return <Card
           key={x.keyId}
+          assigneeicon={icon}         
           {...x}
           />
-        )}
-      </div>
+        })}
+      </div> */}
     </div>
     <p>{spaceInfo.name}</p>
     <button onClick={(event) => getMyselfAsync(event)}> get myself </button>
