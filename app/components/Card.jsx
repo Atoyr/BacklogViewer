@@ -11,8 +11,8 @@ const card = ({id,summary,startDate,dueDate,assingneeId,assigneeName}) =>(
         <p>開始日 : {(new Date(startDate)).toLocaleDateString("ja-JP")}</p>
         <p>期日 　: {(new Date(dueDate)).toLocaleDateString("ja-JP")}</p>
       </Panel.Body>
-      <Panel.Footer>ｚ
-        <Member id={id} name={assigneeName}/>
+      <Panel.Footer>
+        {/* <Member key={id} id={id} name={assigneeName} imgSrc={assigneeicon} /> */}
       </Panel.Footer>
     </Panel>
 )
